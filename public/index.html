@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app="nodeTodo">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+        <title>FONTEND TODO APP</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <!-- SPELLS -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+        <script src="core.js"></script>
+
+</head>
+<body ng-controller="mainController">
+<div class="container-fluid">
+        <h1>TODO APP</h1>
+        <div id="todo-list" class="row col-sm-8 col-sm-offset-2 alert alert-light" style="padding: 8px; margin-top:20px" ng-repeat="todo in todos">
+                <div class="col">
+                        <span ng-class="{'red': todo.done == false, 'green': todo.done == true}">{{ todo.text }} </span>
+                </div>
+                <div class="col right">
+                        <input type="checkbox" ng-click="updateTodo(todo._id, todo.done)" ng-model="todo.done">
+                        <i class="fas fa-trash-alt" ng-click="deleteTodo(todo._id)"></i>      
+                </div>
+        </div>
+<div id="todo-form" class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                        <div class="form-group">
+                                <input type="text" class="form-control input-lg text-center"
+                                        placeholder="TASK NAME" ng-model="formData.text">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">ADD NEW TASK</button>
+                </form>
+        </div>
+</div>
+</div>
+</body>
+</html>
